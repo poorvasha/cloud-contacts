@@ -1,4 +1,3 @@
-import 'package:cloud_contacts/models/input_field_data.dart';
 import 'package:cloud_contacts/utils/resources.dart';
 import 'package:flutter/material.dart';
 
