@@ -104,8 +104,18 @@ class AppInputDatas {
         myController: TextEditingController(),
         keyboardType: TextInputType.text,
         textInputType: FilteringTextInputFormatter.singleLineFormatter),
-    InputFieldData(null, Icons.lock_reset_rounded,
-        hintText: 're-enter your password',
+  ];
+
+  static List<InputFieldData> contactEntryInputFieldData = [
+    InputFieldData(null, Icons.sentiment_very_satisfied_rounded,
+        hintText: 'Enter Your Buddy Name',
+        errMessage: 'please enter valid name',
+        isValid: true,
+        myController: TextEditingController(),
+        keyboardType: TextInputType.emailAddress,
+        textInputType: FilteringTextInputFormatter.singleLineFormatter),
+    InputFieldData(null, Icons.call_rounded,
+        hintText: 'Enter Your Buddy Phone Number',
         errMessage: 'please enter valid password',
         isValid: true,
         myController: TextEditingController(),
@@ -113,4 +123,4 @@ class AppInputDatas {
         textInputType: FilteringTextInputFormatter.singleLineFormatter)
   ];
 }
-// #region
+// #endregion
