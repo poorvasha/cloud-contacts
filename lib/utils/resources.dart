@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import '../models/input_field_data.dart';
 
 class AppResources {
-  static var screenMargin = const EdgeInsets.fromLTRB(30, 30, 30, 60);
+  static var screenMargin = const EdgeInsets.fromLTRB(30, 60, 30, 60);
 }
 
 // #region Colors
@@ -92,6 +92,13 @@ class AppInputDatas {
         textInputType: FilteringTextInputFormatter.singleLineFormatter),
     InputFieldData(null, Icons.lock_rounded,
         hintText: 'password',
+        errMessage: 'please enter valid password',
+        isValid: true,
+        myController: TextEditingController(),
+        keyboardType: TextInputType.text,
+        textInputType: FilteringTextInputFormatter.singleLineFormatter),
+    InputFieldData(null, Icons.lock_reset_rounded,
+        hintText: 're-enter your password',
         errMessage: 'please enter valid password',
         isValid: true,
         myController: TextEditingController(),

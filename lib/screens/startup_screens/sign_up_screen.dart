@@ -16,16 +16,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            // #region Header Image
-            Image.asset('assets/images/welcome_header_image.png',
-                width: MediaQuery.of(context).size.width, fit: BoxFit.fill),
-            // #endregion
+      body: Stack(
+        alignment: AlignmentDirectional.topCenter,
+        children: [
+          
 
-            // #region Body
-            Padding(
+        // #region Body
+        Positioned(
+          height: MediaQuery.of(context).size.height-263,
+          top: 263,
+          left: 0,
+          right: 0,
+          child: SingleChildScrollView(
+            child: Padding(
               padding: AppResources.screenMargin,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -37,15 +40,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           .copyWith(color: Theme.of(context).primaryColor)),
                   const SizedBox(height: 20),
                   // #endregion
-
+              
                   // #region Input Fields
                   InputFields(inputFields: AppInputDatas.signInputData),
                   // #endregion
-
+              
                   // #region content "forgot password"
                   const SizedBox(height: 40),
                   // #endregion
-
+              
                   // #region content "sign up"
                   RichText(
                     text: TextSpan(children: [
@@ -61,16 +64,29 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   const SizedBox(height: 40),
                   // #endregion
-
+              
                   // #region Login Button
                   CustomButton(buttonText: "Sign Up", height: 70, width: null),
                   // #endregion
                 ],
               ),
             ),
-            // #endregion
-          ],
+          ),
         ),
+        // #endregion
+      
+        // #region Header Image
+          Positioned(
+            height: 300,
+            top: 0,
+            left: 0,
+            right: 0,
+            child: Image.asset('assets/images/welcome_header_image.png',
+                width: MediaQuery.of(context).size.width, fit: BoxFit.fill),
+          ),
+          // #endregion
+        
+        ],
       ),
     );
   }
