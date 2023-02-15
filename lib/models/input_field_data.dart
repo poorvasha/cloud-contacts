@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 class InputFieldData {
   String? labelName;
   String hintText;
-  IconData iconData;
+  IconData? iconData;
   String errMessage;
   bool isValid;
   TextEditingController myController;
