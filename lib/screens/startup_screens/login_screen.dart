@@ -20,12 +20,12 @@ class _LoginScreenState extends State<LoginScreen> {
         children: [
           // #region Body
           Positioned(
-            height: MediaQuery.of(context).size.height - 263,
+            height: MediaQuery.of(context).size.height - 225,
             width: MediaQuery.of(context).size.width,
             left: 0,
-            top: 263,
+            top: 225,
             child: Padding(
-              padding: AppResources.screenMargin,
+              padding: AppResources.screenMargin.copyWith(top: 98),
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
