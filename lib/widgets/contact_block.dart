@@ -1,4 +1,4 @@
-import 'package:cloud_contacts/screens/startup_screens/login_screen.dart';
+import 'package:cloud_contacts/screens/startup_screens/login/login_screen.dart';
 import 'package:cloud_contacts/configs/resources.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

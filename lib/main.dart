@@ -1,6 +1,6 @@
 import 'package:cloud_contacts/screens/contacts/contacts.dart';
 import 'package:cloud_contacts/screens/startup_screens/intial_screen.dart';
-import 'package:cloud_contacts/screens/startup_screens/login_screen.dart';
+import 'package:cloud_contacts/screens/startup_screens/login/login_screen.dart';
 import 'package:cloud_contacts/configs/resources.dart';
 
 import 'package:flutter/material.dart';
