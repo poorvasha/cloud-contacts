@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../utils/app_model.dart';
+import '../../providers/app_model.dart';
 import '../../utils/helpers.dart';
 import '../../configs/routes.dart' as routes;
 
