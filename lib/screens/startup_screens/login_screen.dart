@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../utils/app_model.dart';
-import '../../utils/routes.dart' as routes;
+import '../../configs/routes.dart' as routes;
 import '../../widgets/button.dart';
 import '../../widgets/input_field.dart';
 

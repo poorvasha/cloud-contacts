@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../utils/app_model.dart';
 import '../../utils/helpers.dart';
-import '../../utils/routes.dart' as routes;
+import '../../configs/routes.dart' as routes;
 
 class InitalScreen extends StatefulWidget {
   const InitalScreen({super.key});
