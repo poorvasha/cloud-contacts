@@ -77,17 +77,17 @@ class AppShaddows {
 
   static List<BoxShadow> addIconShadow = [
     BoxShadow(
-        color: AppColors.purple.withOpacity(0.40),
-        spreadRadius: 0,
-        offset: const Offset(1, 1),
-        blurRadius: 2,
-        ),
+      color: AppColors.purple.withOpacity(0.40),
+      spreadRadius: 0,
+      offset: const Offset(1, 1),
+      blurRadius: 2,
+    ),
     BoxShadow(
-        color: AppColors.white.withOpacity(0.1),
-        spreadRadius: 0,
-        offset: const Offset(-1, -1),
-        blurRadius: 2,
-        )
+      color: AppColors.white.withOpacity(0.1),
+      spreadRadius: 0,
+      offset: const Offset(-1, -1),
+      blurRadius: 2,
+    )
   ];
 
   static List<BoxShadow> contactButtonShadow = [
