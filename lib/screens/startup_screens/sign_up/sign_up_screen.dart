@@ -2,8 +2,8 @@ import 'package:cloud_contacts/modal_sheets/add_contact_modal.dart';
 import 'package:cloud_contacts/configs/resources.dart';
 import 'package:flutter/material.dart';
 
-import '../../widgets/button.dart';
-import '../../widgets/input_field.dart';
+import '../../../widgets/button.dart';
+import '../../../widgets/input_field.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
