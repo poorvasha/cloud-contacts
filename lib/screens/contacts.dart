@@ -19,7 +19,16 @@ class _ContactsScreenState extends State<ContactsScreen> {
     return Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
         appBar: AppBar(
-            //centerTitle: true,
+            actions: [
+              Padding(
+                padding: const EdgeInsets.only(right: 15),
+                child: Icon(
+                  Icons.logout_rounded,
+                  color: Theme.of(context).backgroundColor,
+                  size: 24,
+                ),
+              ),
+            ],
             backgroundColor: Theme.of(context).primaryColor,
             title: Text(
               "Your Buddies",
