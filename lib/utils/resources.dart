@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import '../models/input_field_data.dart';
 
 class AppResources {
-  static var screenMargin = const EdgeInsets.fromLTRB(30, 60, 30, 60);
+  static var screenMargin = const EdgeInsets.fromLTRB(20, 30, 20, 30);
 }
 
 // #region Colors
@@ -13,7 +13,7 @@ class AppColors {
   static Color lightGrey = const Color(0xFFEFEFEF);
   static Color darkGrey = const Color(0xFF848484);
   static Color extraDarkGrey = const Color(0xFF6D6D6D);
-  static Color purple = const Color(0xFF6C3082);
+  static Color purple = const Color(0xFF3b006a);
   static Color linkBlue = const Color(0xFF0d99ff);
   static Color white = const Color(0xFfffffff);
 }
@@ -55,10 +55,54 @@ class AppShaddows {
         blurStyle: BlurStyle.normal),
     BoxShadow(
         color: AppColors.white.withOpacity(0.60),
-        spreadRadius: 8,
+        spreadRadius: 0,
+        offset: const Offset(-4, -4),
+        blurRadius: 4,
+        blurStyle: BlurStyle.normal)
+  ];
+  static List<BoxShadow> addButtonShadow = [
+    BoxShadow(
+        color: AppColors.purple.withOpacity(0.20),
+        spreadRadius: 0,
+        offset: const Offset(-4, -4),
+        blurRadius: 8,
+        blurStyle: BlurStyle.inner),
+    BoxShadow(
+        color: AppColors.white.withOpacity(0.70),
+        spreadRadius: 0,
+        offset: const Offset(4, 4),
+        blurRadius: 8,
+        blurStyle: BlurStyle.inner)
+  ];
+
+  static List<BoxShadow> addIconShadow = [
+    BoxShadow(
+        color: AppColors.purple.withOpacity(0.40),
+        spreadRadius: 0,
+        offset: const Offset(1, 1),
+        blurRadius: 2,
+        ),
+    BoxShadow(
+        color: AppColors.white.withOpacity(0.1),
+        spreadRadius: 0,
+        offset: const Offset(-1, -1),
+        blurRadius: 2,
+        )
+  ];
+
+  static List<BoxShadow> contactButtonShadow = [
+    BoxShadow(
+        color: AppColors.purple.withOpacity(0.15),
+        spreadRadius: 0,
+        offset: const Offset(4, 4),
+        blurRadius: 12,
+        blurStyle: BlurStyle.inner),
+    BoxShadow(
+        color: AppColors.white.withOpacity(0.50),
+        spreadRadius: 0,
         offset: const Offset(-4, -4),
         blurRadius: 12,
-        blurStyle: BlurStyle.normal)
+        blurStyle: BlurStyle.inner)
   ];
 }
 // #endregion
