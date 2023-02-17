@@ -1,5 +1,5 @@
-import 'package:cloud_contacts/utils/modals.dart';
-import 'package:cloud_contacts/utils/resources.dart';
+import 'package:cloud_contacts/modal_sheets/add_contact_modal.dart';
+import 'package:cloud_contacts/configs/resources.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/button.dart';

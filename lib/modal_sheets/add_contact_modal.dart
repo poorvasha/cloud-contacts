@@ -1,4 +1,4 @@
-import 'package:cloud_contacts/utils/resources.dart';
+import 'package:cloud_contacts/configs/resources.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/button.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../utils/resources.dart';
+import '../configs/resources.dart';
 
 class CustomButton extends StatefulWidget {
   CustomButton(

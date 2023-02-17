@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/input_field_data.dart';
-import '../utils/resources.dart';
+import '../configs/resources.dart';
 
 class InputFields extends StatefulWidget {
   InputFields({super.key, required this.inputFields});

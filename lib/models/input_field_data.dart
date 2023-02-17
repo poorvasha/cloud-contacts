@@ -11,6 +11,11 @@ class InputFieldData {
   TextInputType keyboardType;
   TextInputFormatter textInputType;
 
-  InputFieldData(this.labelName, this.iconData, {required this.hintText, required this.errMessage, required this.isValid,
-      required this.myController, required this.keyboardType, required this.textInputType});
+  InputFieldData(this.labelName, this.iconData,
+      {required this.hintText,
+      required this.errMessage,
+      required this.isValid,
+      required this.myController,
+      required this.keyboardType,
+      required this.textInputType});
 }
