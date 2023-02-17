@@ -1,6 +1,9 @@
 import 'package:cloud_contacts/utils/resources.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../utils/app_model.dart';
+import '../../utils/routes.dart' as routes;
 import '../../widgets/button.dart';
 import '../../widgets/input_field.dart';
 
@@ -72,7 +75,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     // #endregion
 
                     // #region Login Button
-                    CustomButton(buttonText: "Login", height: 70, width: null),
+                    CustomButton(
+                      buttonText: "Login",
+                      height: 70,
+                      width: null,
+                      onPressed: loginBtnOnPressed,
+                    ),
                     // #endregion
                   ],
                 ),
@@ -94,5 +102,9 @@ class _LoginScreenState extends State<LoginScreen> {
         ],
       ),
     );
+  }
+
+  loginBtnOnPressed() {
+    context.read<AppModel>().setInitialRoute = routes.Routes.contacts;
   }
 }

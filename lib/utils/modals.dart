@@ -37,9 +37,13 @@ class AppModals {
                           inputFields:
                               AppInputDatas.contactEntryInputFieldData),
                       // #endregion
-                      SizedBox(height: 60),
+                      const SizedBox(height: 60),
                       // #region Login Button
-                      CustomButton(buttonText: "Save", height: 70, width: null),
+                      CustomButton(
+                          buttonText: "Save",
+                          height: 70,
+                          width: null,
+                          onPressed: () {}),
                       // #endregion
                     ],
                   ),

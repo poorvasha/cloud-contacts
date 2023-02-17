@@ -68,7 +68,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                     // #region Login Button
                     CustomButton(
-                        buttonText: "Sign Up", height: 70, width: null),
+                      buttonText: "Sign Up",
+                      height: 70,
+                      width: null,
+                      onPressed: () {},
+                    ),
                     // #endregion
                   ],
                 ),
