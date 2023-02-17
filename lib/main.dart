@@ -1,10 +1,9 @@
-import 'package:cloud_contacts/screens/startup_screens/login_screen.dart';
 import 'package:cloud_contacts/utils/resources.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'screens/contacts.dart';
-import 'screens/startup_screens/sign_up_screen.dart';
+import 'utils/routes.dart' as routes;
 
 void main() {
   runApp(const MyApp());
@@ -26,7 +25,8 @@ class MyApp extends StatelessWidget {
         backgroundColor: AppColors.extraLightGrey,
         primaryColor: AppColors.purple,
       ),
-      home: const ContactsScreen()
+      onGenerateRoute: routes.Routes.controller,
+      initialRoute: routes.Routes.login,
     );
   }
 }
