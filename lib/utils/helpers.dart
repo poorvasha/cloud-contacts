@@ -21,4 +21,20 @@ class Helpers {
       return false;
     }
   }
+
+  static bool validateEmail(String email) {
+    if (!RegExp(r'\S+@\S+\.\S+').hasMatch(email)) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  static bool validatePassword(String password) {
+    if (password.length < 6) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 }

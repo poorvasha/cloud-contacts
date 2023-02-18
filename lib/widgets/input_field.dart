@@ -4,15 +4,30 @@ import '../models/input_field_data.dart';
 import '../configs/resources.dart';
 
 class InputFields extends StatefulWidget {
-  InputFields({super.key, required this.inputFields});
+  InputFields(
+      {super.key,
+      required this.inputFields,
+      required this.onValidateAllInputs});
 
   List<InputFieldData> inputFields;
+  Function onValidateAllInputs;
 
   @override
   State<InputFields> createState() => _InputFieldsState();
 }
 
 class _InputFieldsState extends State<InputFields> {
+  void onTextChange(String textValue, InputFieldData inputObj) {
+    setState(() {
+      inputObj.isValid = inputObj.onTextChange(textValue);
+      inputObj.showErrMessage = !inputObj.onTextChange(textValue);
+      var isAllInputsValid =
+          widget.inputFields.every((element) => element.isValid == true);
+
+      widget.onValidateAllInputs(isAllInputsValid);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -20,9 +35,9 @@ class _InputFieldsState extends State<InputFields> {
         shrinkWrap: true,
         itemCount: widget.inputFields.length,
         itemBuilder: ((context, index) => SizedBox(
-              height: 100,
+              height: 112,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // #region LableName
                   if (widget.inputFields[index].labelName != null) ...{
@@ -31,7 +46,6 @@ class _InputFieldsState extends State<InputFields> {
                             .copyWith(color: AppColors.extraDarkGrey)),
                   },
                   // #endregion
-
                   // #region InputField
                   Container(
                     alignment: Alignment.center,
@@ -54,6 +68,11 @@ class _InputFieldsState extends State<InputFields> {
                         },
                         Expanded(
                           child: TextField(
+                            enableInteractiveSelection: true,
+                            obscureText: widget.inputFields[index].obscureText,
+                            textInputAction: TextInputAction.next,
+                            onChanged: (value) =>
+                                onTextChange(value, widget.inputFields[index]),
                             keyboardType:
                                 widget.inputFields[index].keyboardType,
                             inputFormatters: [
@@ -76,11 +95,27 @@ class _InputFieldsState extends State<InputFields> {
                   // #endregion
 
                   // #region Error Message
-                  if (!widget.inputFields[index].isValid) ...{
-                    Text(widget.inputFields[index].errMessage,
-                        style: AppTextStyles.semiBoldSubHeadingStyle
-                            .copyWith(color: AppColors.extraDarkGrey)),
-                  }
+
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 25),
+                      child: Text(
+                          widget.inputFields[index].showErrMessage
+                              ? widget.inputFields[index].errMessage
+                              : "",
+                          textAlign: TextAlign.right,
+                          style: AppTextStyles.mediumContentStyle
+                              .copyWith(color: AppColors.extraDarkGrey)),
+                    ),
+                  ),
+                  if (widget.inputFields.length - 1 != index)
+                    const SizedBox(
+                      height: 15,
+                    ),
                   // #endregion
                 ],
               ),

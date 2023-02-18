@@ -1,4 +1,5 @@
 import 'package:cloud_contacts/configs/resources.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -18,41 +19,54 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
   var isButtonEnabled = false;
   static List<InputFieldData> loginInputData = [
-    InputFieldData(null, Icons.person_rounded,
-        hintText: 'username',
-        errMessage: 'please enter valid email',
-        isValid: true,
-        myController: TextEditingController(),
-        keyboardType: TextInputType.emailAddress,
-        textInputType: FilteringTextInputFormatter.singleLineFormatter,
-        onEditingComplete: onEmailFieldEditingDone,
-        obscureText: false),
-    InputFieldData(null, Icons.lock_rounded,
+    InputFieldData(
+      iconData: Icons.person_rounded,
+      hintText: 'username',
+      errMessage: 'please enter valid email',
+      myController: TextEditingController(),
+      keyboardType: TextInputType.emailAddress,
+      textInputType: FilteringTextInputFormatter.singleLineFormatter,
+      onTextChange: onEmailTextChange,
+    ),
+    InputFieldData(
+        iconData: Icons.lock_rounded,
         hintText: 'password',
         errMessage: 'password must be greater than 6 characters',
-        isValid: true,
         myController: TextEditingController(),
         keyboardType: TextInputType.text,
         textInputType: FilteringTextInputFormatter.singleLineFormatter,
-        onEditingComplete: onPasswordFieldEditingDone,
+        onTextChange: onPasswordTextChange,
         obscureText: true)
   ];
-  
-  static bool onEmailFieldEditingDone(String text){
-    if(text != "" && text.isNotEmpty){
+
+  static bool onEmailTextChange(String text) {
+    if (text != "" && text.isNotEmpty) {
       return Helpers.validateEmail(text);
     }
     return false;
   }
 
-  static bool onPasswordFieldEditingDone(String text){
-    if(text != "" && text.isNotEmpty){
+  static bool onPasswordTextChange(String text) {
+    if (text != "" && text.isNotEmpty) {
       return Helpers.validatePassword(text);
     }
     return false;
+  }
+
+  loginBtnOnPressed() {
+    context.read<AppModel>().setInitialRoute = routes.Routes.contacts;
+  }
+
+  onValidateAllInputs(bool isAllInputsValid) {
+    setState(() {
+      isButtonEnabled = isAllInputsValid;
+    });
+  }
+
+  void onTapSignUp() {
+    context.read<AppModel>().setInitialRoute = routes.Routes.signUp;
   }
 
   @override
@@ -86,10 +100,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       // #endregion
 
                       // #region Input Fields
-                      InputFields(inputFields: loginInputData, onValidate: onValidate),
+                      InputFields(
+                          inputFields: loginInputData,
+                          onValidateAllInputs: onValidateAllInputs),
                       // #endregion
 
-                      const SizedBox(height:40),
+                      const SizedBox(height: 40),
                       // #endregion
 
                       // #region content "sign up"
@@ -100,6 +116,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               style: AppTextStyles.mediumContentStyle
                                   .copyWith(color: AppColors.extraDarkGrey)),
                           TextSpan(
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = onTapSignUp,
                               text: " Sign Up",
                               style: AppTextStyles.boldContentStyle.copyWith(
                                   color: Theme.of(context).primaryColor)),
@@ -110,12 +128,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
                       // #region Login Button
                       CustomButton(
-                        buttonText: "Login",
-                        height: 70,
-                        width: null,
-                        onPressed: loginBtnOnPressed,
-                        enabled: isButtonEnabled
-                      ),
+                          buttonText: "Login",
+                          height: 70,
+                          width: null,
+                          onPressed: loginBtnOnPressed,
+                          enabled: isButtonEnabled),
                       // #endregion
                     ],
                   ),
@@ -139,10 +156,4 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-
-  loginBtnOnPressed() {
-    context.read<AppModel>().setInitialRoute = routes.Routes.contacts;
-  }
-  
-  onValidate() {}
 }
