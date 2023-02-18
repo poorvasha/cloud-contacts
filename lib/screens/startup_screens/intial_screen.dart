@@ -28,8 +28,8 @@ class _InitalScreenState extends State<InitalScreen> {
 
   void setIntialScreen() {
     Helpers().checkIsUserLoggedIn().then((isUserLoggedIn) {
-      context.read<AppModel>().setInitialRoute =routes.Routes.signUp;
-          // isUserLoggedIn ? routes.Routes.contacts : routes.Routes.login;
+      context.read<AppModel>().setInitialRoute =
+          isUserLoggedIn ? routes.Routes.contacts : routes.Routes.login;
     });
   }
 }

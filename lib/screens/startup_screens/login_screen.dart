@@ -20,35 +20,42 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   var isButtonEnabled = false;
-  static List<InputFieldData> loginInputData = [
-    InputFieldData(
-      iconData: Icons.person_rounded,
-      hintText: 'username',
-      errMessage: 'please enter valid email',
-      myController: TextEditingController(),
-      keyboardType: TextInputType.emailAddress,
-      textInputType: FilteringTextInputFormatter.singleLineFormatter,
-      onTextChange: onEmailTextChange,
-    ),
-    InputFieldData(
-        iconData: Icons.lock_rounded,
-        hintText: 'password',
-        errMessage: 'password must be atleast 7 charaters',
-        myController: TextEditingController(),
-        keyboardType: TextInputType.text,
-        textInputType: FilteringTextInputFormatter.singleLineFormatter,
-        onTextChange: onPasswordTextChange,
-        obscureText: true)
-  ];
+  List<InputFieldData> loginInputData = [];
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      loginInputData = [
+        InputFieldData(
+          iconData: Icons.person_rounded,
+          hintText: 'username',
+          errMessage: 'please enter valid email',
+          myController: TextEditingController(),
+          keyboardType: TextInputType.emailAddress,
+          textInputType: FilteringTextInputFormatter.singleLineFormatter,
+          onTextChange: onEmailTextChange,
+        ),
+        InputFieldData(
+            iconData: Icons.lock_rounded,
+            hintText: 'password',
+            errMessage: 'password must be atleast 7 charaters',
+            myController: TextEditingController(),
+            keyboardType: TextInputType.text,
+            textInputType: FilteringTextInputFormatter.singleLineFormatter,
+            onTextChange: onPasswordTextChange,
+            obscureText: true)
+      ];
+    });
+  }
 
-  static bool onEmailTextChange(String text) {
+  bool onEmailTextChange(String text) {
     if (text != "" && text.isNotEmpty) {
       return Helpers.validateEmail(text);
     }
     return false;
   }
 
-  static bool onPasswordTextChange(String text) {
+  bool onPasswordTextChange(String text) {
     if (text != "" && text.isNotEmpty) {
       return Helpers.validatePassword(text);
     }
