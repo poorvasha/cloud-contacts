@@ -33,7 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
     InputFieldData(
         iconData: Icons.lock_rounded,
         hintText: 'password',
-        errMessage: 'password must be greater than 6 characters',
+        errMessage: 'password must be atleast 7 charaters',
         myController: TextEditingController(),
         keyboardType: TextInputType.text,
         textInputType: FilteringTextInputFormatter.singleLineFormatter,
@@ -131,7 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           buttonText: "Login",
                           height: 70,
                           width: null,
-                          onPressed: loginBtnOnPressed,
+                          onBtnPressed: loginBtnOnPressed,
                           enabled: isButtonEnabled),
                       // #endregion
                     ],

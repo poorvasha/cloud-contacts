@@ -19,12 +19,26 @@ class InputFields extends StatefulWidget {
 class _InputFieldsState extends State<InputFields> {
   void onTextChange(String textValue, InputFieldData inputObj) {
     setState(() {
-      inputObj.isValid = inputObj.onTextChange(textValue);
-      inputObj.showErrMessage = !inputObj.onTextChange(textValue);
+      var inputIsValid = inputObj.onTextChange(textValue);
+
+      if (inputIsValid && inputObj.equalDependencyController != null) {
+        var equalDependencyvalidation =
+            inputObj.equalDependencyController!.text == textValue;
+        inputObj.isValid = equalDependencyvalidation;
+        inputObj.showErrMessage = !equalDependencyvalidation;
+        var isAllInputsValid =
+            widget.inputFields.every((element) => element.isValid == true);
+
+        widget.onValidateAllInputs(isAllInputsValid);
+        return;
+      }
+      inputObj.isValid = inputIsValid;
+      inputObj.showErrMessage = !inputIsValid;
       var isAllInputsValid =
           widget.inputFields.every((element) => element.isValid == true);
 
       widget.onValidateAllInputs(isAllInputsValid);
+      return;
     });
   }
 
@@ -71,8 +85,10 @@ class _InputFieldsState extends State<InputFields> {
                             enableInteractiveSelection: true,
                             obscureText: widget.inputFields[index].obscureText,
                             textInputAction: TextInputAction.next,
-                            onChanged: (value) =>
-                                onTextChange(value, widget.inputFields[index]),
+                            onChanged: (value) => onTextChange(
+                              value,
+                              widget.inputFields[index],
+                            ),
                             keyboardType:
                                 widget.inputFields[index].keyboardType,
                             inputFormatters: [
@@ -107,7 +123,7 @@ class _InputFieldsState extends State<InputFields> {
                           widget.inputFields[index].showErrMessage
                               ? widget.inputFields[index].errMessage
                               : "",
-                          textAlign: TextAlign.right,
+                          textAlign: TextAlign.left,
                           style: AppTextStyles.mediumContentStyle
                               .copyWith(color: AppColors.extraDarkGrey)),
                     ),

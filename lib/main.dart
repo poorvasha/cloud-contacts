@@ -2,6 +2,7 @@ import 'package:cloud_contacts/screens/contacts.dart';
 import 'package:cloud_contacts/screens/startup_screens/intial_screen.dart';
 import 'package:cloud_contacts/screens/startup_screens/login_screen.dart';
 import 'package:cloud_contacts/configs/resources.dart';
+import 'package:cloud_contacts/screens/startup_screens/sign_up_screen.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -53,7 +54,8 @@ class _MyAppState extends State<MyApp> {
         return const LoginScreen();
       case 'contacts':
         return const ContactsScreen();
-
+      case 'signUp':
+        return const SignUpScreen();
       default:
         return const LoginScreen();
     }

@@ -111,36 +111,6 @@ class AppShaddows {
 
 // #region Input Datas
 class AppInputDatas {
-  static List<InputFieldData> signInputData = [
-    InputFieldData(
-      iconData: Icons.person_rounded,
-      hintText: 'username',
-      errMessage: 'please enter valid username',
-      myController: TextEditingController(),
-      keyboardType: TextInputType.emailAddress,
-      textInputType: FilteringTextInputFormatter.singleLineFormatter,
-      onTextChange: () {},
-    ),
-    InputFieldData(
-      iconData: Icons.lock_rounded,
-      hintText: 'password',
-      errMessage: 'please enter valid password',
-      myController: TextEditingController(),
-      keyboardType: TextInputType.text,
-      textInputType: FilteringTextInputFormatter.singleLineFormatter,
-      onTextChange: () {},
-    ),
-    InputFieldData(
-      iconData: Icons.lock_reset_rounded,
-      hintText: 're-enter your password',
-      errMessage: 'please enter valid password',
-      myController: TextEditingController(),
-      keyboardType: TextInputType.text,
-      textInputType: FilteringTextInputFormatter.singleLineFormatter,
-      onTextChange: () {},
-    ),
-  ];
-
   static List<InputFieldData> contactEntryInputFieldData = [
     InputFieldData(
       iconData: Icons.sentiment_very_satisfied_rounded,

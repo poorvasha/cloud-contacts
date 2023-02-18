@@ -8,13 +8,13 @@ class CustomButton extends StatefulWidget {
       required this.buttonText,
       required this.height,
       required this.width,
-      required this.onPressed,
+      required this.onBtnPressed,
       required this.enabled});
 
   String? buttonText;
   double? height;
   double? width;
-  Function onPressed;
+  Function onBtnPressed;
   bool enabled;
 
   @override
@@ -35,7 +35,7 @@ class _CustomButtonState extends State<CustomButton> {
           boxShadow: AppShaddows.customShadow),
       child: TextButton(
         onPressed: (() {
-          widget.onPressed();
+           widget.enabled ? widget.onBtnPressed() : null;
         }),
         child: Text(widget.buttonText ?? "Text",
             style: AppTextStyles.boldSubHeadingStyle

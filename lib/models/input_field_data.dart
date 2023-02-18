@@ -13,6 +13,7 @@ class InputFieldData {
   Function onTextChange;
   bool obscureText;
   bool showErrMessage;
+  TextEditingController? equalDependencyController;
 
   InputFieldData({
     this.labelName,
@@ -25,6 +26,7 @@ class InputFieldData {
     required this.textInputType,
     required this.onTextChange,
     this.obscureText = false,
-    this.showErrMessage = false,
+    this.showErrMessage = false, 
+    this.equalDependencyController
   });
 }

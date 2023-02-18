@@ -49,7 +49,7 @@ class AppModals {
                             buttonText: "Save",
                             height: 70,
                             width: null,
-                            onPressed: () {},
+                            onBtnPressed: () {},
                             enabled: isButtonEnabled),
                         // #endregion
                       ],
