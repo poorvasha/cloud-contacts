@@ -1,7 +1,7 @@
-import 'package:cloud_contacts/screens/contacts/contacts.dart';
+import 'package:cloud_contacts/screens/contacts.dart';
 import 'package:cloud_contacts/screens/startup_screens/intial_screen.dart';
-import 'package:cloud_contacts/screens/startup_screens/login/login_screen.dart';
-import 'package:cloud_contacts/screens/startup_screens/sign_up/sign_up_screen.dart';
+import 'package:cloud_contacts/screens/startup_screens/login_screen.dart';
+import 'package:cloud_contacts/screens/startup_screens/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 
 class Routes {

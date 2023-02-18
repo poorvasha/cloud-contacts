@@ -4,7 +4,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
-import '../../widgets/contact_block.dart';
+import '../widgets/contact_block.dart';
 
 class ContactsScreen extends StatefulWidget {
   const ContactsScreen({super.key});

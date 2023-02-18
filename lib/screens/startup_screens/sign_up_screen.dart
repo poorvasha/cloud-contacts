@@ -1,82 +1,81 @@
+import 'package:cloud_contacts/modal_sheets/add_contact_modal.dart';
 import 'package:cloud_contacts/configs/resources.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../../../providers/app_model.dart';
-import '../../../configs/routes.dart' as routes;
-import '../../../widgets/button.dart';
-import '../../../widgets/input_field.dart';
+import '../../widgets/button.dart';
+import '../../widgets/input_field.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
-
-  
+class _SignUpScreenState extends State<SignUpScreen> {
+  onModalPressed() {}
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (() {
-         FocusScope.of(context).unfocus();
+        FocusScope.of(context).unfocus();
       }),
       child: Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
         body: Stack(
+          alignment: AlignmentDirectional.topCenter,
           children: [
             // #region Body
             Positioned(
               height: MediaQuery.of(context).size.height - 225,
-              width: MediaQuery.of(context).size.width,
-              left: 0,
               top: 225,
-              child: Padding(
-                padding: AppResources.screenMargin.copyWith(top: 98),
-                child: SingleChildScrollView(
+              left: 0,
+              right: 0,
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: AppResources.screenMargin.copyWith(top: 98),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       // #region SubHeader "WelCome Back"
-                      Text('Welcome Back!',
+                      Text('We are happy to serve you!',
                           style: AppTextStyles.semiBoldheaderStyle
                               .copyWith(color: Theme.of(context).primaryColor)),
                       const SizedBox(height: 20),
                       // #endregion
-    
+
                       // #region Input Fields
-                      InputFields(inputFields: AppInputDatas.loginInputData),
+                      InputFields(inputFields: AppInputDatas.signInputData),
                       // #endregion
-    
-                      const SizedBox(height: 60),
+
+                      // #region content "forgot password"
+                      const SizedBox(height: 40),
                       // #endregion
-    
+
                       // #region content "sign up"
                       RichText(
                         text: TextSpan(children: [
                           TextSpan(
-                              text: "Don\'t have an account?",
+                              text: "Already you have an account?",
                               style: AppTextStyles.mediumContentStyle
                                   .copyWith(color: AppColors.extraDarkGrey)),
                           TextSpan(
-                              text: " Sign Up",
+                              text: " Login",
                               style: AppTextStyles.boldContentStyle.copyWith(
                                   color: Theme.of(context).primaryColor)),
                         ]),
                       ),
                       const SizedBox(height: 40),
                       // #endregion
-    
+
                       // #region Login Button
                       CustomButton(
-                        buttonText: "Login",
+                        buttonText: "Sign Up",
                         height: 70,
                         width: null,
-                        onPressed: loginBtnOnPressed,
+                        onPressed: () {},
                       ),
                       // #endregion
                     ],
@@ -85,13 +84,13 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             // #endregion
-    
+
             // #region Header Image
             Positioned(
               height: 300,
-              width: MediaQuery.of(context).size.width,
               top: 0,
               left: 0,
+              right: 0,
               child: Image.asset('assets/images/welcome_header_image.png',
                   width: MediaQuery.of(context).size.width, fit: BoxFit.fill),
             ),
@@ -100,9 +99,5 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
-  }
-
-  loginBtnOnPressed() {
-    context.read<AppModel>().setInitialRoute = routes.Routes.contacts;
   }
 }
