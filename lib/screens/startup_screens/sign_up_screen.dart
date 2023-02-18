@@ -14,7 +14,7 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   onModalPressed() {}
-
+  var isButtonEnabled = false;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -47,7 +47,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       // #endregion
 
                       // #region Input Fields
-                      InputFields(inputFields: AppInputDatas.signInputData),
+                      InputFields(
+                          inputFields: AppInputDatas.signInputData,
+                          onValidateAllInputs: () {}),
                       // #endregion
 
                       // #region content "forgot password"
@@ -72,11 +74,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                       // #region Login Button
                       CustomButton(
-                        buttonText: "Sign Up",
-                        height: 70,
-                        width: null,
-                        onPressed: () {},
-                      ),
+                          buttonText: "Sign Up",
+                          height: 70,
+                          width: null,
+                          onPressed: () {},
+                          enabled: isButtonEnabled),
                       // #endregion
                     ],
                   ),

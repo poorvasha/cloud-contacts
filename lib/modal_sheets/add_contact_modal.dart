@@ -6,6 +6,7 @@ import '../widgets/input_field.dart';
 
 class AppModals {
   static dynamic contactEntryBottomSheet(BuildContext context) {
+    var isButtonEnabled = false;
     showModalBottomSheet(
         isScrollControlled: true,
         backgroundColor: Colors.transparent,
@@ -39,7 +40,8 @@ class AppModals {
                         // #region Input Fields
                         InputFields(
                             inputFields:
-                                AppInputDatas.contactEntryInputFieldData),
+                                AppInputDatas.contactEntryInputFieldData,
+                            onValidateAllInputs: () {}),
                         // #endregion
                         const SizedBox(height: 60),
                         // #region Login Button
@@ -47,7 +49,8 @@ class AppModals {
                             buttonText: "Save",
                             height: 70,
                             width: null,
-                            onPressed: () {}),
+                            onPressed: () {},
+                            enabled: isButtonEnabled),
                         // #endregion
                       ],
                     ),
