@@ -61,15 +61,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
     });
   }
 
-  static bool onEmailTextChange(String text, [String? reEnteredPassword = '']) {
+  static bool onEmailTextChange(String text) {
     if (text != "" && text.isNotEmpty) {
       return Helpers.validateEmail(text);
     }
     return false;
   }
 
-  static bool onPasswordTextChange(String text,
-      [String? reEnteredPassword = '']) {
+  static bool onPasswordTextChange(String text) {
     if (text != "" && text.isNotEmpty) {
       return Helpers.validatePassword(text);
     }
