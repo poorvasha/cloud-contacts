@@ -16,6 +16,8 @@ class AppColors {
   static Color purple = const Color(0xFF3b006a);
   static Color linkBlue = const Color(0xFF0d99ff);
   static Color white = const Color(0xFfffffff);
+  static Color red = Color.fromARGB(227, 223, 1, 1);
+  static Color black = const Color(0xFF000000);
 }
 // #endregion
 
@@ -109,23 +111,6 @@ class AppShaddows {
 
 // #region Input Datas
 class AppInputDatas {
-  static List<InputFieldData> loginInputData = [
-    InputFieldData(null, Icons.person_rounded,
-        hintText: 'username',
-        errMessage: 'please enter valid username',
-        isValid: true,
-        myController: TextEditingController(),
-        keyboardType: TextInputType.emailAddress,
-        textInputType: FilteringTextInputFormatter.singleLineFormatter),
-    InputFieldData(null, Icons.lock_rounded,
-        hintText: 'password',
-        errMessage: 'please enter valid password',
-        isValid: true,
-        myController: TextEditingController(),
-        keyboardType: TextInputType.text,
-        textInputType: FilteringTextInputFormatter.singleLineFormatter)
-  ];
-
   static List<InputFieldData> signInputData = [
     InputFieldData(null, Icons.person_rounded,
         hintText: 'username',
@@ -133,21 +118,27 @@ class AppInputDatas {
         isValid: true,
         myController: TextEditingController(),
         keyboardType: TextInputType.emailAddress,
-        textInputType: FilteringTextInputFormatter.singleLineFormatter),
+        textInputType: FilteringTextInputFormatter.singleLineFormatter,
+        onEditingComplete: () {},
+        obscureText: false),
     InputFieldData(null, Icons.lock_rounded,
         hintText: 'password',
         errMessage: 'please enter valid password',
         isValid: true,
         myController: TextEditingController(),
         keyboardType: TextInputType.text,
-        textInputType: FilteringTextInputFormatter.singleLineFormatter),
+        textInputType: FilteringTextInputFormatter.singleLineFormatter,
+        onEditingComplete: () {},
+        obscureText: false),
     InputFieldData(null, Icons.lock_reset_rounded,
         hintText: 're-enter your password',
         errMessage: 'please enter valid password',
         isValid: true,
         myController: TextEditingController(),
         keyboardType: TextInputType.text,
-        textInputType: FilteringTextInputFormatter.singleLineFormatter),
+        textInputType: FilteringTextInputFormatter.singleLineFormatter,
+        onEditingComplete: () {},
+        obscureText: false),
   ];
 
   static List<InputFieldData> contactEntryInputFieldData = [
@@ -157,14 +148,18 @@ class AppInputDatas {
         isValid: true,
         myController: TextEditingController(),
         keyboardType: TextInputType.emailAddress,
-        textInputType: FilteringTextInputFormatter.singleLineFormatter),
+        textInputType: FilteringTextInputFormatter.singleLineFormatter,
+        onEditingComplete: () {},
+        obscureText: false),
     InputFieldData(null, Icons.call_rounded,
         hintText: 'Enter Your Buddy Phone Number',
         errMessage: 'please enter valid password',
         isValid: true,
         myController: TextEditingController(),
         keyboardType: TextInputType.text,
-        textInputType: FilteringTextInputFormatter.singleLineFormatter)
+        textInputType: FilteringTextInputFormatter.singleLineFormatter,
+        onEditingComplete: () {},
+        obscureText: false)
   ];
 }
 // #endregion
