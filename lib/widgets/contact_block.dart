@@ -65,7 +65,8 @@ class _ContactBlockState extends State<ContactBlock> {
                               color: Theme.of(context).backgroundColor,
                               borderRadius: BorderRadius.circular(50),
                               boxShadow: AppShaddows.contactButtonShadow),
-                          child: Icon(Icons.phone_rounded, color: Theme.of(context).primaryColor)),
+                          child: Icon(Icons.phone_rounded,
+                              color: Theme.of(context).primaryColor)),
                     ),
                     SpeedDialChild(
                         elevation: 0,

@@ -15,18 +15,17 @@ class InputFieldData {
   bool showErrMessage;
   TextEditingController? equalDependencyController;
 
-  InputFieldData({
-    this.labelName,
-    this.iconData,
-    required this.hintText,
-    required this.errMessage,
-    this.isValid = false,
-    required this.myController,
-    required this.keyboardType,
-    required this.textInputType,
-    required this.onTextChange,
-    this.obscureText = false,
-    this.showErrMessage = false, 
-    this.equalDependencyController
-  });
+  InputFieldData(
+      {this.labelName,
+      this.iconData,
+      required this.hintText,
+      required this.errMessage,
+      this.isValid = false,
+      required this.myController,
+      required this.keyboardType,
+      required this.textInputType,
+      required this.onTextChange,
+      this.obscureText = false,
+      this.showErrMessage = false,
+      this.equalDependencyController});
 }

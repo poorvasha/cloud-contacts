@@ -35,7 +35,7 @@ class _CustomButtonState extends State<CustomButton> {
           boxShadow: AppShaddows.customShadow),
       child: TextButton(
         onPressed: (() {
-           widget.enabled ? widget.onBtnPressed() : null;
+          widget.enabled ? widget.onBtnPressed() : null;
         }),
         child: Text(widget.buttonText ?? "Text",
             style: AppTextStyles.boldSubHeadingStyle

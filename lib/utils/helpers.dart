@@ -37,12 +37,4 @@ class Helpers {
       return true;
     }
   }
-
-  // static bool validateReEnteredPassword(String password, String reEnteredPassword) {
-  //   if (password.length < 6 && password == reEnteredPassword) {
-  //     return false;
-  //   } else {
-  //     return true;
-  //   }
-  // }
 }
