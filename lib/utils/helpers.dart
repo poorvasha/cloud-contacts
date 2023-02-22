@@ -37,4 +37,20 @@ class Helpers {
       return true;
     }
   }
+
+  static bool validateName(String email) {
+    if (!RegExp(r'\S+@\S+\.\S+').hasMatch(email)) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+   static bool validatePhoneNumber(String phoneNumber) {
+    if (!RegExp(r'(^(?:[+0]9)?[0-9]{10,12}$)').hasMatch(phoneNumber)) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 }

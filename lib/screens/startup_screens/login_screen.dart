@@ -64,6 +64,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   loginBtnOnPressed() {
     context.read<AppModel>().setInitialRoute = routes.Routes.contacts;
+    var email = loginInputData[0].myController.text;
+    var password = loginInputData[1].myController.text;
   }
 
   onValidateAllInputs(bool isAllInputsValid) {

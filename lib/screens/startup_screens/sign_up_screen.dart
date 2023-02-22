@@ -84,6 +84,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   signUpBtnOnPressed() {
     context.read<AppModel>().setInitialRoute = Routes.contacts;
+    var email = signInputData[0].myController.text;
+    var password = signInputData[1].myController.text;
   }
 
   onValidateAllInputs(bool isAllInputsValid) {

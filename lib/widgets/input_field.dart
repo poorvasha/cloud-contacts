@@ -68,7 +68,7 @@ class _InputFieldsState extends State<InputFields> {
                     height: 70,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                        color: AppColors.extraLightGrey,
+                        color: widget.inputFields[index].disabledBGColor,
                         borderRadius:
                             const BorderRadius.all(Radius.circular(35)),
                         boxShadow: AppShaddows.customShadow),
@@ -82,6 +82,7 @@ class _InputFieldsState extends State<InputFields> {
                         },
                         Expanded(
                           child: TextField(
+                            enabled: widget.inputFields[index].isEnabled,
                             enableInteractiveSelection: true,
                             obscureText: widget.inputFields[index].obscureText,
                             textInputAction: TextInputAction.next,

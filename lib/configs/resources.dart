@@ -9,15 +9,15 @@ class AppResources {
 
 // #region Colors
 class AppColors {
-  static Color extraLightGrey = const Color(0xFFF6F6F6);
-  static Color lightGrey = const Color(0xFFEFEFEF);
-  static Color darkGrey = const Color(0xFF848484);
-  static Color extraDarkGrey = const Color(0xFF6D6D6D);
-  static Color purple = const Color(0xFF3b006a);
-  static Color linkBlue = const Color(0xFF0d99ff);
-  static Color white = const Color(0xFfffffff);
-  static Color red = Color.fromARGB(227, 223, 1, 1);
-  static Color black = const Color(0xFF000000);
+  static const Color extraLightGrey =Color(0xFFF6F6F6);
+  static const Color lightGrey =Color(0xFFEFEFEF);
+  static const Color darkGrey =Color(0xFF848484);
+  static const Color extraDarkGrey =Color(0xFF6D6D6D);
+  static const Color purple =Color(0xFF3b006a);
+  static const Color linkBlue =Color(0xFF0d99ff);
+  static const Color white =Color(0xFfffffff);
+  static const Color red =Color.fromARGB(227, 223, 1, 1);
+  static const Color black =Color(0xFF000000);
 }
 // #endregion
 
@@ -109,27 +109,3 @@ class AppShaddows {
 }
 // #endregion
 
-// #region Input Datas
-class AppInputDatas {
-  static List<InputFieldData> contactEntryInputFieldData = [
-    InputFieldData(
-      iconData: Icons.sentiment_very_satisfied_rounded,
-      hintText: 'Enter Your Buddy Name',
-      errMessage: 'please enter valid name',
-      myController: TextEditingController(),
-      keyboardType: TextInputType.emailAddress,
-      textInputType: FilteringTextInputFormatter.singleLineFormatter,
-      onTextChange: () {},
-    ),
-    InputFieldData(
-      iconData: Icons.call_rounded,
-      hintText: 'Enter Your Buddy Phone Number',
-      errMessage: 'please enter valid password',
-      myController: TextEditingController(),
-      keyboardType: TextInputType.text,
-      textInputType: FilteringTextInputFormatter.singleLineFormatter,
-      onTextChange: () {},
-    )
-  ];
-}
-// #endregion

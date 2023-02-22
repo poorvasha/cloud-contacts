@@ -1,16 +1,38 @@
+import 'package:cloud_contacts/models/contact_model.dart';
 import 'package:cloud_contacts/screens/startup_screens/login_screen.dart';
 import 'package:cloud_contacts/configs/resources.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ContactBlock extends StatefulWidget {
-  const ContactBlock({super.key});
+  ContactBlock({super.key, required this.contact});
+
+  ContactModel contact;
 
   @override
   State<ContactBlock> createState() => _ContactBlockState();
 }
 
 class _ContactBlockState extends State<ContactBlock> {
+  phoneTapped(String phoneNumber) async {
+    var url = Uri.parse("tel:$phoneNumber");
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+  onWhatsappTapped(String phoneNumber) async {
+    var whatsappUrl = Uri.parse("whatsapp://send?phone=${"91$phoneNumber"}");
+    if (await canLaunchUrl(whatsappUrl)) {
+      await launchUrl(whatsappUrl);
+    } else {
+      throw 'Could not launch $whatsappUrl';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,7 +48,9 @@ class _ContactBlockState extends State<ContactBlock> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text("Poorvasha"),
+          Text(widget.contact.name,
+              style: AppTextStyles.mediumSubHeadingStyle
+                  .copyWith(color: AppColors.extraDarkGrey)),
           FloatingActionButton(
               mini: true,
               backgroundColor: Colors.transparent,
@@ -56,7 +80,7 @@ class _ContactBlockState extends State<ContactBlock> {
                   children: [
                     SpeedDialChild(
                       elevation: 0,
-                      onTap: () {},
+                      onTap: () => phoneTapped(widget.contact.phoneNumber),
                       labelShadow: AppShaddows.contactButtonShadow,
                       labelWidget: Container(
                           height: 40,
@@ -71,7 +95,7 @@ class _ContactBlockState extends State<ContactBlock> {
                     SpeedDialChild(
                         elevation: 0,
                         foregroundColor: Colors.green,
-                        onTap: () {},
+                        onTap: () => onWhatsappTapped(widget.contact.phoneNumber),
                         labelShadow: AppShaddows.contactButtonShadow,
                         labelWidget: Container(
                             height: 40,
