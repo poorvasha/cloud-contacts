@@ -43,8 +43,9 @@ class SecureStorage {
     try {
       Map<String, String> allData =
           await _secureStorage.readAll(aOptions: _getAndroidOptions());
-      List<LocalStorageItem> mappedData =
-          allData.entries.map((e) => LocalStorageItem(e.key, e.value)).toList();
+      List<LocalStorageItem> mappedData = allData.entries
+          .map((e) => LocalStorageItem(key: e.key, value: e.value))
+          .toList();
       return mappedData;
     } catch (e) {
       if (kDebugMode) {
@@ -52,7 +53,6 @@ class SecureStorage {
       }
       return null;
     }
-    
   }
 
   Future<void> deleteAllSecureData(String key) async {

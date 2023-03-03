@@ -14,68 +14,12 @@ class AppModel with ChangeNotifier {
     notifyListeners();
   }
 
-  List<ContactModel> _contacts = [
-    ContactModel(1, 'jcndc', '8838199417'),
-    ContactModel(2, 'pporvba', '8838199417'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-    ContactModel(3, 'yuva', '9944937052'),
-
-  ];
-  List<ContactModel> get getContacts {
+  List<ContactWithIdModel> _contacts = [];
+  List<ContactWithIdModel> get getContacts {
     return _contacts;
   }
 
-  set setContacts(List<ContactModel> contacts) {
+  set setContacts(List<ContactWithIdModel> contacts) {
     _contacts = contacts;
     notifyListeners();
   }

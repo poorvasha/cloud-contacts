@@ -1,5 +1,5 @@
 class LocalStorageItem {
- LocalStorageItem(this.key, this.value);
+ LocalStorageItem({required this.key, required this.value});
 
  final String key;
  final String value;

@@ -1,5 +1,7 @@
+import 'package:cloud_contacts/controller/auth_controller.dart';
 import 'package:cloud_contacts/modal_sheets/add_contact_modal.dart';
 import 'package:cloud_contacts/configs/resources.dart';
+import 'package:cloud_contacts/models/user_model.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,6 +10,7 @@ import 'package:provider/provider.dart';
 import '../../configs/routes.dart';
 import '../../models/input_field_data.dart';
 import '../../providers/app_model.dart';
+import '../../utils/dialog_helper.dart';
 import '../../utils/helpers.dart';
 import '../../widgets/button.dart';
 import '../../widgets/input_field.dart';
@@ -82,10 +85,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return false;
   }
 
-  signUpBtnOnPressed() {
-    context.read<AppModel>().setInitialRoute = Routes.contacts;
-    var email = signInputData[0].myController.text;
-    var password = signInputData[1].myController.text;
+  signUpBtnOnPressed() async {
+    var userModel = UserModel(
+        email: signInputData[0].myController.text,
+        password: signInputData[1].myController.text);
+    // var userModel = UserModel(
+    //     name: "selvi", email: "selvi@gmail.co", password: "selvi@20");
+    var result = await AuthController().registerUser(context, userModel);
+    if (result.isEmpty) return;
+    await DialogHelper().showErrorDialog(context,
+        title: "Congratulation!", description: "Registration Sucessfull");
+    context.read<AppModel>().setInitialRoute = Routes.login;
   }
 
   onValidateAllInputs(bool isAllInputsValid) {

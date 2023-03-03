@@ -1,6 +1,8 @@
 import 'package:cloud_contacts/configs/resources.dart';
+import 'package:cloud_contacts/controller/contacts_controller.dart';
 import 'package:cloud_contacts/modal_sheets/add_contact_modal.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
@@ -18,7 +20,7 @@ class ContactsScreen extends StatefulWidget {
   State<ContactsScreen> createState() => _ContactsScreenState();
 }
 
-class _ContactsScreenState extends State<ContactsScreen> {
+class _ContactsScreenState extends State<ContactsScreen> with PostFrameMixin {
   List<InputFieldData> contactEntryInputFieldData = [];
   var isContactSaveButtonEnabled = false;
 
@@ -26,6 +28,12 @@ class _ContactsScreenState extends State<ContactsScreen> {
   void initState() {
     super.initState();
     setInttialValueForInputFields();
+    postFrame(getContacts);
+  }
+
+  void getContacts() async {
+    context.read<AppModel>().setContacts =
+        await ContactsController().fetchAllContacts(context);
   }
 
   void setInttialValueForInputFields() {
@@ -58,19 +66,18 @@ class _ContactsScreenState extends State<ContactsScreen> {
   }
 
   logoutbtnOnPressed() async {
-    await SecureStorage().deleteSecureData('userToken');
+    await SecureStorage().deleteSecureData('accesstoken');
     context.read<AppModel>().setInitialRoute = Routes.login;
   }
 
-  onContactTapped(ContactModel selectedItem) {
+  onContactTapped(ContactWithIdModel selectedItem) {
     setInttialValueForInputFields();
-    
-      AppModals().contactEntryBottomSheet(context, contactEntryInputFieldData,
-          false, false, editBtnOnPressed, deleteBtnOnPressed, selectedItem);
-   
+
+    AppModals().contactEntryBottomSheet(context, contactEntryInputFieldData,
+        false, false, editBtnOnPressed, selectedItem);
   }
 
-  void editBtnOnPressed(ContactModel? selectedItem) {
+  void editBtnOnPressed(ContactWithIdModel? selectedItem) {
     contactEntryInputFieldData =
         contactEntryInputFieldData.map<InputFieldData>((item) {
       item.isEnabled = true;
@@ -79,12 +86,7 @@ class _ContactsScreenState extends State<ContactsScreen> {
     }).toList();
     Navigator.of(context).pop();
     AppModals().contactEntryBottomSheet(context, contactEntryInputFieldData,
-        false, true, editBtnOnPressed, deleteBtnOnPressed, selectedItem);
-  }
-
-  void deleteBtnOnPressed(ContactModel? selectedItem) {
-
-    Navigator.of(context).pop();
+        false, true, editBtnOnPressed, selectedItem, true);
   }
 
   @override
@@ -121,9 +123,12 @@ class _ContactsScreenState extends State<ContactsScreen> {
                 child: ListView.builder(
                     itemCount: context.watch<AppModel>().getContacts.length,
                     itemBuilder: ((context, index) => GestureDetector(
-                        onTap: () => 
-                              onContactTapped(AppModel().getContacts[index]),
-                            
+                        onTap: (() {
+                          List<ContactWithIdModel> contacts =
+                              Provider.of<AppModel>(context, listen: false)
+                                  .getContacts;
+                          onContactTapped(contacts[index]);
+                        }),
                         child: ContactBlock(
                             contact: context
                                 .watch<AppModel>()
@@ -149,4 +154,14 @@ class _ContactsScreenState extends State<ContactsScreen> {
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat);
   }
+}
+
+mixin PostFrameMixin<T extends StatefulWidget> on State<T> {
+  void postFrame(void Function() callback) =>
+      WidgetsBinding.instance.addPostFrameCallback(
+        (_) {
+          // Execute callback if page is mounted
+          if (mounted) callback();
+        },
+      );
 }

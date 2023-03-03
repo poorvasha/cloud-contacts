@@ -4,9 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
+import '../../controller/auth_controller.dart';
 import '../../models/input_field_data.dart';
+import '../../models/local_storage_item.dart';
+import '../../models/user_model.dart';
 import '../../providers/app_model.dart';
-import '../../configs/routes.dart' as routes;
+import '../../configs/routes.dart';
+import '../../services/secure_local_storage.dart';
+import '../../utils/dialog_helper.dart';
 import '../../utils/helpers.dart';
 import '../../widgets/button.dart';
 import '../../widgets/input_field.dart';
@@ -62,10 +67,17 @@ class _LoginScreenState extends State<LoginScreen> {
     return false;
   }
 
-  loginBtnOnPressed() {
-    context.read<AppModel>().setInitialRoute = routes.Routes.contacts;
-    var email = loginInputData[0].myController.text;
-    var password = loginInputData[1].myController.text;
+  loginBtnOnPressed() async {
+    var userModel = UserModel(
+        email: loginInputData[0].myController.text,
+        password: loginInputData[1].myController.text);
+    // var userModel = UserModel(email: "selvi@gmail.co", password: "selvi@20");
+    var result = await AuthController().loginUser(context, userModel);
+    if (result.isEmpty) return;
+    await SecureStorage().writeSecureData(
+        LocalStorageItem(key: "accesstoken", value: result["accesstoken"]));
+    Provider.of<AppModel>(context, listen: false).setInitialRoute =
+        Routes.contacts;
   }
 
   onValidateAllInputs(bool isAllInputsValid) {
@@ -75,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void onTapSignUp() {
-    context.read<AppModel>().setInitialRoute = routes.Routes.signUp;
+    context.read<AppModel>().setInitialRoute = Routes.signUp;
   }
 
   @override

@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
 
 import '../services/secure_local_storage.dart';
 
@@ -6,9 +7,9 @@ class Helpers {
   Future<bool> checkIsUserLoggedIn() async {
     try {
       var isContainsKey =
-          await SecureStorage().containsKeyInSecureData('userToken');
+          await SecureStorage().containsKeyInSecureData('accesstoken');
       if (isContainsKey) {
-        var data = await SecureStorage().readSecureData('userToken');
+        var data = await SecureStorage().readSecureData('accesstoken');
         if (data != null && data.isNotEmpty) {
           return true;
         }
@@ -46,7 +47,7 @@ class Helpers {
     }
   }
 
-   static bool validatePhoneNumber(String phoneNumber) {
+  static bool validatePhoneNumber(String phoneNumber) {
     if (!RegExp(r'(^(?:[+0]9)?[0-9]{10,12}$)').hasMatch(phoneNumber)) {
       return false;
     } else {
