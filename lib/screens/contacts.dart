@@ -27,7 +27,7 @@ class _ContactsScreenState extends State<ContactsScreen> with PostFrameMixin {
   @override
   void initState() {
     super.initState();
-    setInttialValueForInputFields();
+    contactEntryInputFieldData = setInttialValueForInputFields();
     postFrame(getContacts);
   }
 
@@ -36,8 +36,8 @@ class _ContactsScreenState extends State<ContactsScreen> with PostFrameMixin {
         await ContactsController().fetchAllContacts(context);
   }
 
-  void setInttialValueForInputFields() {
-    contactEntryInputFieldData = [
+  List<InputFieldData> setInttialValueForInputFields() {
+    return [
       InputFieldData(
         iconData: Icons.sentiment_very_satisfied_rounded,
         hintText: 'Enter Your Buddy Name',
@@ -60,7 +60,7 @@ class _ContactsScreenState extends State<ContactsScreen> with PostFrameMixin {
   }
 
   void onAddBtnPressed(BuildContext context) {
-    setInttialValueForInputFields();
+    contactEntryInputFieldData = setInttialValueForInputFields();
     AppModals().contactEntryBottomSheet(
         context, contactEntryInputFieldData, true, false);
   }
@@ -71,8 +71,8 @@ class _ContactsScreenState extends State<ContactsScreen> with PostFrameMixin {
   }
 
   onContactTapped(ContactWithIdModel selectedItem) {
-    setInttialValueForInputFields();
-
+    contactEntryInputFieldData = setInttialValueForInputFields();
+    contactEntryInputFieldData.map((e) => e.readOnly = true).toList();
     AppModals().contactEntryBottomSheet(context, contactEntryInputFieldData,
         false, false, editBtnOnPressed, selectedItem);
   }
@@ -81,6 +81,8 @@ class _ContactsScreenState extends State<ContactsScreen> with PostFrameMixin {
     contactEntryInputFieldData =
         contactEntryInputFieldData.map<InputFieldData>((item) {
       item.isEnabled = true;
+      item.isValid = true;
+      item.readOnly = false;
       item.disabledBGColor = AppColors.extraLightGrey;
       return item;
     }).toList();
@@ -114,27 +116,29 @@ class _ContactsScreenState extends State<ContactsScreen> with PostFrameMixin {
                   .copyWith(color: AppColors.lightGrey),
               textAlign: TextAlign.center,
             )),
-        body: Padding(
-          padding: AppResources.screenMargin.copyWith(top: 10),
-          child: Column(
-            children: [
-              Container(
-                height: MediaQuery.of(context).size.height - 135,
-                child: ListView.builder(
-                    itemCount: context.watch<AppModel>().getContacts.length,
-                    itemBuilder: ((context, index) => GestureDetector(
-                        onTap: (() {
-                          List<ContactWithIdModel> contacts =
-                              Provider.of<AppModel>(context, listen: false)
-                                  .getContacts;
-                          onContactTapped(contacts[index]);
-                        }),
-                        child: ContactBlock(
-                            contact: context
-                                .watch<AppModel>()
-                                .getContacts[index])))),
-              ),
-            ],
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: AppResources.screenMargin.copyWith(top: 10),
+            child: Column(
+              children: [
+                Container(
+                  height: MediaQuery.of(context).size.height - 135,
+                  child: ListView.builder(
+                      itemCount: context.watch<AppModel>().getContacts.length,
+                      itemBuilder: ((context, index) => GestureDetector(
+                          onTap: (() {
+                            List<ContactWithIdModel> contacts =
+                                Provider.of<AppModel>(context, listen: false)
+                                    .getContacts;
+                            onContactTapped(contacts[index]);
+                          }),
+                          child: ContactBlock(
+                              contact: context
+                                  .watch<AppModel>()
+                                  .getContacts[index])))),
+                ),
+              ],
+            ),
           ),
         ),
         floatingActionButton: Container(

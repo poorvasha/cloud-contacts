@@ -25,11 +25,15 @@ class _ContactBlockState extends State<ContactBlock> {
   }
 
   onWhatsappTapped(String phoneNumber) async {
-    var whatsappUrl = Uri.parse("whatsapp://send?phone=${"91$phoneNumber"}");
-    if (await canLaunchUrl(whatsappUrl)) {
-      await launchUrl(whatsappUrl);
-    } else {
-      throw 'Could not launch $whatsappUrl';
+    try {
+      var whatsappUrl = Uri.parse("whatsapp://send?phone=${"91$phoneNumber"}");
+      await launchUrl(whatsappUrl, mode: LaunchMode.externalApplication);
+    } on Exception catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("WhatsApp is not installed on the device"),
+        ),
+      );
     }
   }
 
@@ -95,7 +99,8 @@ class _ContactBlockState extends State<ContactBlock> {
                     SpeedDialChild(
                         elevation: 0,
                         foregroundColor: Colors.green,
-                        onTap: () => onWhatsappTapped(widget.contact.phoneNumber),
+                        onTap: () =>
+                            onWhatsappTapped(widget.contact.phoneNumber),
                         labelShadow: AppShaddows.contactButtonShadow,
                         labelWidget: Container(
                             height: 40,

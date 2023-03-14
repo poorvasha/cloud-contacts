@@ -1,5 +1,5 @@
 class ApiRoutes {
-  static const String base_url = "http://192.168.26.247:3000";
+  static const String base_url = "http://137.184.59.171:5000";
 
   static String auth_register_APIURL = "$base_url/api/users/register";
   static String auth_login_APIURL = "$base_url/api/users/login";

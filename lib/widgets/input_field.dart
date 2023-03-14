@@ -45,11 +45,12 @@ class _InputFieldsState extends State<InputFields> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+        physics: const NeverScrollableScrollPhysics(),
         padding: const EdgeInsets.all(0),
         shrinkWrap: true,
         itemCount: widget.inputFields.length,
         itemBuilder: ((context, index) => SizedBox(
-              height: 112,
+              height: 111,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -82,6 +83,7 @@ class _InputFieldsState extends State<InputFields> {
                         },
                         Expanded(
                           child: TextField(
+                            readOnly: widget.inputFields[index].readOnly,
                             enabled: widget.inputFields[index].isEnabled,
                             enableInteractiveSelection: true,
                             obscureText: widget.inputFields[index].obscureText,
@@ -110,9 +112,9 @@ class _InputFieldsState extends State<InputFields> {
                     ),
                   ),
                   // #endregion
-
+    
                   // #region Error Message
-
+    
                   const SizedBox(
                     height: 10,
                   ),

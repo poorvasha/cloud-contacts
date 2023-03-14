@@ -20,13 +20,14 @@ class InputFieldData {
   TextEditingController? equalDependencyController;
   bool? isEnabled;
   Color? disabledBGColor;
+  bool readOnly;
 
   InputFieldData(
       {this.labelName,
       this.iconData,
       required this.hintText,
       required this.errMessage,
-      this.isValid = true,
+      this.isValid = false,
       required this.myController,
       required this.keyboardType,
       required this.textInputType,
@@ -35,5 +36,6 @@ class InputFieldData {
       this.showErrMessage = false,
       this.equalDependencyController,
       this.isEnabled = true,
-      this.disabledBGColor = AppColors.extraLightGrey});
+      this.disabledBGColor = AppColors.extraLightGrey,
+      this.readOnly = false});
 }

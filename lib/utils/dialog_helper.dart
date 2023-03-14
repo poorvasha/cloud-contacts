@@ -40,24 +40,38 @@ class DialogHelper {
   Future<void> showLoading(BuildContext context, {String? message}) {
     return showDialog<void>(
         context: context,
-        builder: (BuildContext context) => SimpleDialog(children: [
-              Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CircularProgressIndicator(
-                      color: Theme.of(context).primaryColor,
-                      strokeWidth: 8,
+        builder: (BuildContext context) => SimpleDialog(
+                backgroundColor: Colors.transparent,
+                elevation: 0,
+                children: [
+                  Center(
+                    child: Container(
+                      height: 100,
+                      width: 110,
+                      decoration: const BoxDecoration(
+                        color: AppColors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CircularProgressIndicator(
+                            color: Theme.of(context).primaryColor,
+                            strokeWidth: 5,
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            message ?? 'loading...',
+                            style: AppTextStyles.mediumContentStyle
+                                .copyWith(color: AppColors.extraDarkGrey),
+                          )
+                        ],
+                      ),
                     ),
-                    Text(
-                      message ?? 'loading...',
-                      style: AppTextStyles.mediumContentStyle
-                          .copyWith(color: AppColors.extraDarkGrey),
-                    )
-                  ],
-                ),
-              ),
-            ]));
+                  ),
+                ]));
   }
 
   // Hide loading

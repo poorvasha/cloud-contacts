@@ -52,10 +52,9 @@ class AppModals {
       response = await ContactsController().updateContact(context, contactObj);
     }
 
-    if (response.isEmpty){
-     
+    if (response.isEmpty) {
       return;
-    } 
+    }
     Navigator.of(context).pop();
     context.read<AppModel>().setContacts = response;
     print(response);
@@ -128,19 +127,18 @@ class AppModals {
                 FocusScope.of(context).unfocus();
               }),
               child: Container(
-                padding: const EdgeInsets.only(top: 40),
+                padding: const EdgeInsets.only(bottom: 40),
                 decoration: BoxDecoration(
                     color: Theme.of(context).backgroundColor,
                     borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(30.0),
                         topRight: Radius.circular(30.0))),
-                height: MediaQuery.of(context).size.height / 2,
-                width: MediaQuery.of(context).size.width,
                 child: SingleChildScrollView(
-                  child: Flexible(
-                      child: Padding(
-                    padding: AppResources.screenMargin.copyWith(top: 0),
+                  child: Padding(
+                    padding: AppResources.screenMargin.copyWith(
+                        bottom: MediaQuery.of(context).viewInsets.bottom),
                     child: Column(
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         // #region SubHeader "WelCome Back"
                         Row(
@@ -209,7 +207,7 @@ class AppModals {
                         // #endregion
                       ],
                     ),
-                  )),
+                  ),
                 ),
               ),
             )));

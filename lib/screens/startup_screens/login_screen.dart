@@ -33,7 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
       loginInputData = [
         InputFieldData(
           iconData: Icons.person_rounded,
-          hintText: 'username',
+          hintText: 'email',
           errMessage: 'please enter valid email',
           myController: TextEditingController(),
           keyboardType: TextInputType.emailAddress,
@@ -126,7 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           onValidateAllInputs: onValidateAllInputs),
                       // #endregion
 
-                      const SizedBox(height: 40),
+                      const SizedBox(height: 30),
                       // #endregion
 
                       // #region content "sign up"

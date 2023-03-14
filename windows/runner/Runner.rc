@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "cloud_contacts" "\0"
+            VALUE "FileDescription", "Cloud Contacts" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "cloud_contacts" "\0"
+            VALUE "InternalName", "Cloud Contacts" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
             VALUE "OriginalFilename", "cloud_contacts.exe" "\0"
-            VALUE "ProductName", "cloud_contacts" "\0"
+            VALUE "ProductName", "Cloud Contacts" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
